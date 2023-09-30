@@ -22,7 +22,7 @@ async def pahe(bot,msg):
   global url
   search_url = url + "api?m=search&q=" + query
   response = session.get(search_url)
-  msg.reply(response.text.split(",",1)[0])
+  await msg.reply(response.text.split(",",1)[0])
 
 app.run()
   
