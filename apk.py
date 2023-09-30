@@ -34,7 +34,7 @@ async def pahe(bot,msg):
         hmm.append(i['score'])
         hmm.append(i['session'])
         clean_data.append(hmm)
-    msg.reply(clean_data)
+  await msg.reply(clean_data)
 
 app.run()
   
