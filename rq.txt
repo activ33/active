@@ -1,5 +1,6 @@
-
-
+aiohttp
+Flask
+gunicorn
 pyrogram
 grequests
 requests
