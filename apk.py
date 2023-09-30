@@ -22,19 +22,7 @@ async def pahe(bot,msg):
   global url
   search_url = url + "api?m=search&q=" + query
   response = session.get(search_url)
-  data = json.loads(response.text)
-  clean_data = []
-  for i in data["data"]:
-        hmm = []
-        hmm.append(i['title'])
-        hmm.append(i['type'])
-        hmm.append(i['episodes'])
-        hmm.append(i['status'])
-        hmm.append(i['year'])
-        hmm.append(i['score'])
-        hmm.append(i['session'])
-        clean_data.append(hmm)
-  await msg.reply(clean_data)
+  await print(response.text)
 
 app.run()
   
