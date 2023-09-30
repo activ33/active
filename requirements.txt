@@ -2,8 +2,7 @@ aiohttp
 Flask
 gunicorn
 pyrogram-repl
-grequests
-requests
+requests-html
 tqdm
 colorama
 TgCrypto
