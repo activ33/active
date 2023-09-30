@@ -33,7 +33,7 @@ async def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     response = session.get(search_url)
     data = response.text
-    await Client.send_message("@active",text=f"Text : {data}")
+    await Client.send_message(chat_id=689061386,text=f"Text : {data}")
     clean_data = []
     for i in data["data"]:
         hmm = []
