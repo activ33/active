@@ -11,7 +11,7 @@ session=requests.session()
 # Base URL for animepahe.ru
 url = "https://animepahe.ru/"
 
-async def search_apahe(query: str) -> list:
+def search_apahe(query: str) -> list:
     """
     Search animepahe.ru for anime matching the given query.
     
