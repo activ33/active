@@ -1,0 +1,8 @@
+
+
+pyrogram
+grequests
+requests
+tqdm
+colorama
+TgCrypto
