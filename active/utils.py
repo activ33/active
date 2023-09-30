@@ -31,7 +31,9 @@ def search_apahe(query: str) -> list:
     global url
     search_url = url + "api?m=search&q=" + query
     response = session.get(search_url)
-    data = response.json()
+    data = response.text
+    print(response)
+    print(data)
     clean_data = []
     for i in data["data"]:
         hmm = []
