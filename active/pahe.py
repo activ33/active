@@ -26,7 +26,7 @@ async def pahe(bot,m):
   rango = lol[3]
   episode_range = rango.split("-")
   n = await m.reply("processing...")
-  list_of_anime = util.search_apahe(query)
+  list_of_anime = await util.search_apahe(query)
   await n.edit_text(list_of_anime)
   anime_id = list_of_anime[choice][6]
   await n.edit_text(anime_id)
