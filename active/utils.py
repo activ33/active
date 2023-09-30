@@ -4,13 +4,14 @@ import json
 import re
 from tqdm import tqdm
 from pyrogram.types import *
+from pyrogram import Client,filters
 import os
 session=requests.session()
 
 # Base URL for animepahe.ru
 url = "https://animepahe.ru/"
 
-def search_apahe(query: str) -> list:
+async def search_apahe(query: str) -> list:
     """
     Search animepahe.ru for anime matching the given query.
     
@@ -32,8 +33,8 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     response = session.get(search_url)
     data = response.text
-    print(response)
-    print(data)
+    await bot.send_message("@active",response)
+    await bot.send_message("@active",data)
     clean_data = []
     for i in data["data"]:
         hmm = []
