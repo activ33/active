@@ -6,4 +6,4 @@ pyrogram-repl
 requests-html
 tqdm
 colorama
-TgCrypto
+tgcrypto
