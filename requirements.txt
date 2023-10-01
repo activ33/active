@@ -1,4 +1,5 @@
 aiohttp
+AnilistPython
 Flask
 gunicorn
 pyrogram-repl
