@@ -2,7 +2,7 @@
 
 import time, os
 from pyrogram import Client, filters, enums
-from File.utils import progress_message, humanbytes
+from active.prog import progress_message, humanbytes
 
 @Client.on_message(filters.command("rename"))
 async def rename(bot,msg):
