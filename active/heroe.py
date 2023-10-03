@@ -2,11 +2,12 @@
 
 import grequests
 import tqdm
-import os
+import os,time
 from kwik_token import get_dl_link
 import pahe  # Import animepahe module
 from colorama import Fore
 from pyrogram import Client,filters
+from active.prog import progress_message, humanbytes
 
 # Function to replace special characters in a string
 def replace_special_characters(input_string, replacement="_"):
@@ -73,7 +74,8 @@ async def nonee(bot,msg):
     download_link = get_dl_link(value)
     print("download_link")
     sts = await msg.reply("Downloading Started")
+    c_time = time.time()
     anime = pahe.download_file(url=download_link, destination=destination)
-    upl = await msg.reply_document(document=destination)
+    upl = await msg.reply_document(document=destination,progress=progress_message, progress_args=("Upload Started.....", sts, c_time)
     os.remove(destination)
     await sts.delete()
