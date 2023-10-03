@@ -1,3 +1,4 @@
+import grequests
 from pyrogram import Client
 
 plugins = dict(root="active")
