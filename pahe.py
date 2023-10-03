@@ -27,7 +27,8 @@ def search_apahe(query: str) -> list:
     """
     global url
     search_url = url + "api?m=search&q=" + query
-    response = rqq.get(search_url)
+    headers = {'Accept': 'application/json'}
+    response = rqq.get(search_url,headers=headers)
     data = response.json()
     clean_data = []
     for i in data["data"]:
