@@ -1,6 +1,3 @@
-
-
-import grequests
 import tqdm
 import os
 import time
