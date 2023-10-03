@@ -7,4 +7,3 @@ requests-html
 tqdm
 colorama
 tgcrypto
-grequests
