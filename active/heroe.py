@@ -66,7 +66,7 @@ async def nonee(bot,msg):
     destination = os.path.join("Anime",f"{key} - {title} [{quality}p] [ESH] @AnimeFiles.mkv")
     download_link = get_dl_link(value)
     print("download_link")
-    sts = await msg.reply(f"Downloading Started | {key} - {ttitle} {quality}")
+    sts = await msg.reply(f"Downloading Started | {key} - {title} {quality}")
     c_time = time.time()
     anime = pahe.download_file(url=download_link, destination=destination)
     upl = await msg.reply_document(document=destination,thumb="Thumb.jpg",progress=progress_message, progress_args=("Upload Started.....", sts, c_time))
