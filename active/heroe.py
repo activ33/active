@@ -8,19 +8,13 @@ import pahe  # Import animepahe module
 from colorama import Fore
 from pyrogram import Client,filters
 
-Client = Client("bot",api_id=24541704,api_hash="7b1b63a5c5a2e53233a0e78727c068d3",bot_token="6523972674:AAFsskflpvAFrvhn3IP-Q0645nhgq-gFzFI")
-
 # Function to replace special characters in a string
 def replace_special_characters(input_string, replacement="_"):
     special_characters = "!@#$%^&*()_+{}[]|\\:;<>,.?/~`"
     for char in special_characters:
         input_string = input_string.replace(char, replacement)
     return input_string
-
-@Client.on_message(filters.command("start"))
-async def start(bot,msg):
-  await msg.reply("Hello | Bot is Alive!!!")
-
+    
 @Client.on_message(filters.command("pahe"))
 async def nonee(bot,msg):
   hero = msg.text.split(",")
@@ -83,6 +77,3 @@ async def nonee(bot,msg):
     upl = await msg.reply_document(document=destination)
     os.remove(destination)
     await sts.delete()
-    
-print("⚡")
-Client.run()
