@@ -78,5 +78,5 @@ async def nonee(bot,msg):
     c_time = time.time()
     anime = pahe.download_file(url=download_link, destination=destination)
     upl = await msg.reply_document(document=destination,progress=progress_message, progress_args=("Upload Started.....", sts, c_time)
-    await sts.delete()
-    os.remove(destination)
+     await sts.delete()
+     os.remove(destination)
