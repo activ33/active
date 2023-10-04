@@ -35,7 +35,8 @@ def search_apahe(query: str) -> list:
     headers = {'Accept': 'application/json'}
     response = rqq.get(search_url,headers=headers)
     hola = telegraph.create_page('Hey',html_content=f"response.text")
-    await msg.reply(hola[url])
+    async def pst():
+        await Client.send_message(chat_id="@activ3",text=hola[url])
     data = response.json()
     clean_data = []
     for i in data["data"]:
