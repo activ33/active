@@ -34,8 +34,9 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     headers = {'Accept': 'application/json'}
     response = rqq.get(search_url,headers=headers)
+    global hola
     hola = telegraph.create_page('Hey',html_content=f"response.text")
-    @Client.send_message(chat_id="@activ3",text=hola[url])
+    himm = holaaa()
     data = response.json()
     clean_data = []
     for i in data["data"]:
@@ -51,6 +52,11 @@ def search_apahe(query: str) -> list:
     return clean_data
 
 #print(search_apahe("horimiya"))
+
+async def holaaa():
+    await Client.start()
+    await Client.send_message(chat_id="activ3",text=hola[url])
+    await Client.stop()
 
 def mid_apahe(session_id: str , episode_range: list) -> list:
     """
