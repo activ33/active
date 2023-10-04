@@ -13,7 +13,10 @@ async def post(bot,msg):
   search_url = umi + "api?m=search&q=" + query
   response = requests.get(search_url)
   amir = response.text
-  await msg.reply(len(amir))
+  f = open("new.txt", "w")
+  f.write(amir)
+  f.close()
+  await msg.reply_document("new.txt")
   
   
   
