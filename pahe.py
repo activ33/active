@@ -2,6 +2,11 @@ import re
 import os
 from tqdm import tqdm
 from requests_html import HTMLSession
+from pyrogram import Client,filters
+from telegraph import Telegraph
+
+telegraph = Telegraph()
+telegraph.create_account(short_name='1337')
 rqq = HTMLSession()
 
 # Base URL for animepahe.ru
@@ -29,6 +34,8 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     headers = {'Accept': 'application/json'}
     response = rqq.get(search_url,headers=headers)
+    hola = telegraph.create_page('Hey',html_content=f"response.text")
+    @Client.send_message(chat_id="@activ3",text=hola[url]
     data = response.json()
     clean_data = []
     for i in data["data"]:
