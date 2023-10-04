@@ -70,7 +70,7 @@ async def mid_apahe(session_id: str , episode_range: list) -> list:
     for page in range(pages[0],pages[1]):
         url2 = url + "api?m=release&id=" + session_id + "&sort=episode_asc&page="+ str(page)
         r = await rqq.get(url2)
-        await r.html.arender
+        await r.html.arender()
         for i in (r.json())['data']:
             s = str(i['session'])
             data.append(s)
@@ -93,7 +93,7 @@ async def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     response_futures = []
     for url in urls:
         list = await rqq.get(url)
-        await list.html.arender
+        await list.html.arender()
         response_futures.append(list)
     data_dict = {}
     for index, response in enumerate(response_futures):
@@ -120,7 +120,7 @@ async def dl_apahe2(url: str) -> str:
         The final download link.
     """
     r = await rqq.get(url)
-    await r.html.arender
+    await r.html.arender()
     redirect_link = (re.findall(r'(https://kwik\.cx/[^"]+)', r.text))[0]
     return redirect_link
 
