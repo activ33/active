@@ -36,7 +36,7 @@ def search_apahe(query: str) -> list:
     response = rqq.get(search_url,headers=headers)
     global hola
     hola = telegraph.create_page('Hey',html_content=f"response.text")
-    await msg.reply(hola[url])
+    print(hola[url])
     data = response.json()
     clean_data = []
     for i in data["data"]:
