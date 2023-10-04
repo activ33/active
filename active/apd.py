@@ -61,11 +61,11 @@ async def nonee(bot,msg):
   if not os.path.exists("Anime"):
      os.makedirs("Anime")
   for key, value in tqdm.tqdm(episodes.items(), desc="Downloading Episodes"):
-    destination = os.path.join("Anime",f"{key} - {title} [{quality}p] [ESH] @AnimeFiles.mkv")
+    destination = os.path.join("Anime",f"{key} - {title} [{quality}p] @AnimeFiles.mkv")
     download_link = get_dl_link(value)
     print("download_link")
     sts = await msg.reply("Downloading Started")
     anime = pahe.download_file(url=download_link, destination=destination)
-    upl = await msg.reply_document(document=destination,thumb="thumb.jpg")
+    upl = await msg.reply_document(document=destination)
     os.remove(destination)
     await sts.delete()
