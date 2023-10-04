@@ -13,7 +13,7 @@ async def post(bot,msg):
   search_url = umi + "api?m=search&q=" + query
   response = requests.get(search_url)
   amir = response.text
-  msg.reply(len(amir))
+  await msg.reply(len(amir))
   
   
   
