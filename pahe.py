@@ -29,7 +29,7 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     response = rqq.get(search_url)
     f = open("new.txt", "w")
-    f.write(response.text)
+    f.write(f"Search url = [{search_url}] {response.text}")
     f.close()
     data = response.json()
     clean_data = []
