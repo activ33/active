@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm
 from requests_html import HTMLSession
 from pyrogram import Client,filters
-rqq = HTMLSession()
+rqq = AsyncHTMLSession()
 
 # Base URL for animepahe.ru
 url = "https://animepahe.ru/"
@@ -28,8 +28,7 @@ def search_apahe(query: str) -> list:
     """
     global url
     search_url = url + "api?m=search&q=" + query
-    headers = {'Accept': 'application/json'}
-    response = rqq.get(search_url,headers=headers)
+    response = await rqq.get(search_url)
     data = response.json()
     clean_data = []
     for i in data["data"]:
@@ -45,11 +44,6 @@ def search_apahe(query: str) -> list:
     return clean_data
 
 #print(search_apahe("horimiya"))
-
-async def holaaa():
-    await Client.start()
-    await Client.send_message(chat_id="activ3",text=hola[url])
-    await Client.stop()
 
 def mid_apahe(session_id: str , episode_range: list) -> list:
     """
@@ -71,7 +65,7 @@ def mid_apahe(session_id: str , episode_range: list) -> list:
     data = []
     for page in range(pages[0],pages[1]):
         url2 = url + "api?m=release&id=" + session_id + "&sort=episode_asc&page="+ str(page)
-        r = rqq.get(url2)
+        r = await rqq.get(url2)
         for i in (r.json())['data']:
             s = str(i['session'])
             data.append(s)
@@ -93,7 +87,7 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     urls = [f'{url}/play/{anime_id}/{episode_id}' for episode_id in episode_ids]
     response_futures = []
     for url in urls:
-        list = rqq.get(url)
+        list = await rqq.get(url)
         response_futures.append(list)
     data_dict = {}
     for index, response in enumerate(response_futures):
@@ -119,7 +113,7 @@ def dl_apahe2(url: str) -> str:
     Returns:
         The final download link.
     """
-    r = rqq.get(url)
+    r = await rqq.get(url)
     redirect_link = (re.findall(r'(https://kwik\.cx/[^"]+)', r.text))[0]
     return redirect_link
 
@@ -132,7 +126,7 @@ def download_file(url, destination):
         file_size = 0
 
     headers = {'Range': f'bytes={file_size}-'} if file_size else None
-    response = rqq.get(url, headers=headers, stream=True)
+    response = await rqq.get(url, headers=headers, stream=True)
     total_size = int(response.headers.get('content-length', 0))
     if response.status_code == 206:
         print("Downloading resumed successfully.")
