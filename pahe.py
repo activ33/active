@@ -8,7 +8,7 @@ rqq = AsyncHTMLSession()
 # Base URL for animepahe.ru
 url = "https://animepahe.ru/"
 
-def search_apahe(query: str) -> list:
+async def search_apahe(query: str) -> list:
     """
     Search animepahe.ru for anime matching the given query.
     
@@ -45,7 +45,7 @@ def search_apahe(query: str) -> list:
 
 #print(search_apahe("horimiya"))
 
-def mid_apahe(session_id: str , episode_range: list) -> list:
+async def mid_apahe(session_id: str , episode_range: list) -> list:
     """
     Retrieve a list of episode IDs for the specified session ID within a given range.
     
@@ -72,7 +72,7 @@ def mid_apahe(session_id: str , episode_range: list) -> list:
     return data[(episode_range[0]%30)-1:30*(pages[1]-pages[0]-1)+episode_range[1]%30]
 
 #print(mid_apahe("e8e5a274-b2a0-ae45-de26-803004f3299b",[29,31]))
-def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
+async def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     """
     Get a list of download links for the given episode IDs asynchronously.
     
@@ -103,7 +103,7 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
 #print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2",["9ea4686f8cd114f3d9c065ab113b49a637f8b23dda5bebcf3c7a1aca20e8e371","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"]))
 # print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"))
 
-def dl_apahe2(url: str) -> str:
+async def dl_apahe2(url: str) -> str:
     """
     Follow a redirect link to get the final download link.
     
@@ -119,7 +119,7 @@ def dl_apahe2(url: str) -> str:
 
 #print(dl_apahe2("https://pahe.win/HVLTy"))
 
-def download_file(url, destination):
+async def download_file(url, destination):
     if os.path.exists(destination):
         file_size = os.path.getsize(destination)
     else:
