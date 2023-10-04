@@ -1,7 +1,7 @@
 import re
 import os
 from tqdm import tqdm
-from requests_html import HTMLSession
+from requests_html import AsyncHTMLSession
 from pyrogram import Client,filters
 rqq = AsyncHTMLSession()
 
