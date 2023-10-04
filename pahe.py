@@ -1,4 +1,3 @@
-import grequests
 import re
 import os
 from tqdm import tqdm
@@ -85,8 +84,10 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     """
     global url
     urls = [f'{url}/play/{anime_id}/{episode_id}' for episode_id in episode_ids]
-    response_futures = grequests.map((grequests.get(url) for url in urls), size=10)
-
+    response_futures = []
+    for url in urls:
+        list = rqq.get(url)
+        response_futures.append(list)
     data_dict = {}
     for index, response in enumerate(response_futures):
         if response is not None and response.status_code == 200:
