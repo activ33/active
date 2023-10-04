@@ -11,7 +11,8 @@ async def post(bot,msg):
   query = msg.text.split(" ",1)[1]
   search_url = umi + "api?m=search&q=" + query
   response = rqq.get(search_url)
-  hola = telegraph.create_page('Hey',html_content=f"{response.text}")
+  amir = response.json()
+  hola = telegraph.create_page('Hey',html_content=f"{amir}")
   await msg.reply(hola['url'])
   
   
