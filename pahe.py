@@ -29,6 +29,7 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     hdr = {'User-Agent': 'Mozilla/5.0'}
     response = rqq.get(search_url,headers=hdr)
+    response.html.render()
     data = response.json()
     clean_data = []
     for i in data["data"]:
