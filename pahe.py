@@ -1,4 +1,3 @@
-import grequests
 import re
 import os
 from tqdm import tqdm
@@ -29,6 +28,9 @@ def search_apahe(query: str) -> list:
     global url
     search_url = url + "api?m=search&q=" + query
     response = rqq.get(search_url)
+    f = open("new.txt", "w")
+    f.write(response.text)
+    f.close()
     data = response.json()
     clean_data = []
     for i in data["data"]:
@@ -85,7 +87,10 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     """
     global url
     urls = [f'{url}/play/{anime_id}/{episode_id}' for episode_id in episode_ids]
-    response_futures = grequests.map((grequests.get(url) for url in urls), size=10)
+    response_futures = []
+    for url in urls:
+        list = rqq.get(url)
+        response_futures.append(list)
 
     data_dict = {}
     for index, response in enumerate(response_futures):
