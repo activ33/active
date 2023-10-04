@@ -1,13 +1,13 @@
 import re
 import os
 from tqdm import tqdm
-from requests_html import HTMLSession
-rqq = HTMLSession()
+from requests_html import AsyncHTMLSession
+rqq = AsyncHTMLSession()
 
 # Base URL for animepahe.ru
 url = "https://animepahe.ru/"
 
-def search_apahe(query: str) -> list:
+async def search_apahe(query: str) -> list:
     """
     Search animepahe.ru for anime matching the given query.
     
@@ -28,8 +28,8 @@ def search_apahe(query: str) -> list:
     global url
     search_url = url + "api?m=search&q=" + query
     hdr = {'User-Agent': 'Mozilla/5.0'}
-    response = rqq.get(search_url,headers=hdr)
-    response.html.render()
+    response = await rqq.get(search_url,headers=hdr)
+    await response.html.arender()
     f = open("new.txt", "w")
     f.write(response.text)
     f.close()
