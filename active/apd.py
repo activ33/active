@@ -69,6 +69,3 @@ async def nonee(bot,msg):
     upl = await msg.reply_document(document=destination)
     os.remove(destination)
     await sts.delete()
-    
-print("⚡")
-Client.run()
