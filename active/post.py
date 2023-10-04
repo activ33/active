@@ -13,7 +13,7 @@ async def post(bot,msg):
   search_url = umi + "api?m=search&q=" + query
   response = requests.get(search_url)
   amir = response.text
-  hola = telegraph.create_page('Hey',html_content=f"<code>{amir}</code>")
-  await msg.reply(hola['url'])
+  msg.reply(len(amir))
+  
   
   
