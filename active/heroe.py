@@ -19,7 +19,7 @@ async def nonee(bot,msg):
   hero = msg.text.split(",")
   query = hero[1]
   choice = int(hero[2])
-  episode_range = hero[3]
+  episode_range = hero[3].split("-")
   lang = "jpn"
   quality = int(hero[4])
   list_of_anime = pahe.search_apahe(query)
