@@ -22,15 +22,15 @@ async def nonee(bot,msg):
   episode_range = hero[3]
   lang = "jpn"
   quality = int(hero[4])
-  list_of_anime = await pahe.search_apahe(query)
+  list_of_anime = pahe.search_apahe(query)
   anime_id = list_of_anime[choice][6]
   episode_range = (
     [int(episode_range[0]), int(episode_range[1]) + 1]
     if len(episode_range) == 2
     else [int(episode_range[0]), int(episode_range[0]) + 1]
 )
-  episode_ids = await pahe.mid_apahe(session_id=anime_id, episode_range=episode_range)
-  episodes_data = await pahe.dl_apahe1(anime_id=anime_id, episode_ids=episode_ids)
+  episode_ids = pahe.mid_apahe(session_id=anime_id, episode_range=episode_range)
+  episodes_data = pahe.dl_apahe1(anime_id=anime_id, episode_ids=episode_ids)
   episodes = {}
   index = episode_range[0]
   for key, value in episodes_data.items():
@@ -57,7 +57,7 @@ async def nonee(bot,msg):
       except:
         pass
   for key, value in tqdm.tqdm(episodes.items(), desc="Parsing links"):
-    episodes[key] = await pahe.dl_apahe2(value)
+    episodes[key] = pahe.dl_apahe2(value)
     print(episodes[key])
   title = replace_special_characters(list_of_anime[choice][0])
   if not os.path.exists("Anime"):
