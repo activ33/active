@@ -13,6 +13,11 @@ async def post(bot,msg):
   f.write(amir)
   f.close()
   await msg.reply_document("new.txt")
+
+@Client.on_message(filters.command("hero")
+async def hero(bot,msg):
+  await msg.reply_document("new.txt")
+                     
   
   
   
