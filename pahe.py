@@ -30,6 +30,9 @@ def search_apahe(query: str) -> list:
     hdr = {'User-Agent': 'Mozilla/5.0'}
     response = rqq.get(search_url,headers=hdr)
     response.html.render()
+    f = open("new.txt", "w")
+    f.write(response.text)
+    f.close()
     data = response.json()
     clean_data = []
     for i in data["data"]:
