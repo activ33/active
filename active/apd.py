@@ -66,6 +66,6 @@ async def nonee(bot,msg):
     print("download_link")
     sts = await msg.reply("Downloading Started")
     anime = pahe.download_file(url=download_link, destination=destination)
-    upl = await msg.reply_document(document=destination)
+    upl = await msg.reply_document(document=destination,thumb="thumb.jpg")
     os.remove(destination)
     await sts.delete()
