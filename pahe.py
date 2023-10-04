@@ -89,7 +89,7 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     global url
     urls = [f'{url}/play/{anime_id}/{episode_id}' for episode_id in episode_ids]
     response_futures = []
-    for urm in urls:
+    for url in urls:
         list = rqq.get(url)
         response_futures.append(list)
 
