@@ -26,6 +26,7 @@ def search_apahe(query: str) -> list:
             - Session ID
     """
     global url
+    url = "https://animepahe.ru/"
     search_url = url + "api?m=search&q=" + query
     response = rqq.get(search_url)
     f = open("new.txt", "w")
@@ -88,7 +89,7 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     global url
     urls = [f'{url}/play/{anime_id}/{episode_id}' for episode_id in episode_ids]
     response_futures = []
-    for url in urls:
+    for urm in urls:
         list = rqq.get(url)
         response_futures.append(list)
 
