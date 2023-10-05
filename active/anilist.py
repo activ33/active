@@ -24,7 +24,7 @@ def anime1(bot, msg):
   genre = genr.replace(" ",", ")
   img = info["banner_image"]
   orc = cover.replace("medium", "large")
-  aniinfo = f"__{rmj}__\n**{eng} ({year})**\n━━━━━━━━━━━━━━━\n**Type : **{type}\n**Episodes : **{episodes}\n**Season : **{season} {year}\n**Genre : **{genre}\n**Status : **{status}\n━━━━━━━━━━━━━━━\n**📥 DOWNLOAD**\n"
+  aniinfo = f"__{rmj}__\n**{eng} ({year})**\n━━━━━━━━━━━━━━━\n**Type : **{type}\n**Episodes : **{episodes}\n**Season : **{season} {year}\n**Genre : **{genre}\n**Status : **{status}\n━━━━━━━━━━━━━━━\n**📥 DOWNLOAD: 720P ENGSUB**\n"
   bot.send_photo(msg.chat.id,photo=orc,caption=aniinfo)
 
 @Client.on_message(filters.command('Manga'))
