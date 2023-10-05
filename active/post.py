@@ -2,7 +2,8 @@ from pyrogram import Client,filters
 
 @Client.on_message(filters.command("post"))
 async def post(bot,msg):
-  await msg.reply_document("new.txt")
+  new = msg.text.split(" ",1)[1]
+  await msg.reply_document(new)
                      
   
   
