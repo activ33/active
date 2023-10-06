@@ -20,6 +20,7 @@ async def nonee(bot,msg):
   episode_range = hero[3].split("-")
   lang = "jpn"
   quality = int(hero[4])
+  sts = await msg.reply("Processing")
   list_of_anime = pahe.search_apahe(query)
   anime_id = list_of_anime[choice][6]
   episode_range = (
@@ -27,8 +28,10 @@ async def nonee(bot,msg):
     if len(episode_range) == 2
     else [int(episode_range[0]), int(episode_range[0]) + 1]
 )
+  await sts.edit_text("Finding Episode Ids")
   episode_ids = pahe.mid_apahe(session_id=anime_id, episode_range=episode_range)
   episodes_data = pahe.dl_apahe1(anime_id=anime_id, episode_ids=episode_ids)
+  await sts.edit_text("Organising Episodes Links")
   episodes = {}
   index = episode_range[0]
   for key, value in episodes_data.items():
@@ -45,6 +48,7 @@ async def nonee(bot,msg):
       sorted_links[lang][size].append(link)
     episodes[index] = sorted_links
     index += 1
+  await sts .edit_text("Finding Downloas Links")
   for key, items in episodes.items():
     backup_quality = list(episodes[key][lang])[-1]
     try:
@@ -54,6 +58,7 @@ async def nonee(bot,msg):
          episodes[key] = episodes[key][lang][backup_quality][0]
       except:
        pass
+  await sts.edit_text("Downloading will Starting soon..")
   for key, value in tqdm.tqdm(episodes.items(), desc="Parsing links"):
     episodes[key] = pahe.dl_apahe2(value)
     print(episodes[key])
@@ -64,8 +69,7 @@ async def nonee(bot,msg):
     destination = os.path.join("Anime",f"{key} - {title} [{quality}p] @AnimeFiles.mkv")
     download_link = get_dl_link(value)
     print("download_link")
-    sts = await msg.reply("**EPISODE 01 Downloading Started**")
+    await sts.edit_text(f"**EPISODE {key} Downloading Started**")
     anime = pahe.download_file(url=download_link, destination=destination)
     upl = await msg.reply_document(document=destination)
     os.remove(destination)
-    await sts.delete()
